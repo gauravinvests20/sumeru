@@ -448,10 +448,10 @@ function Projects() {
   const [showAll, setShowAll] = useState(false)
 
   const projects = [
-    { img: '/images/projects/13.jpg', title: 'Commercial Solar Carport', loc: '📍 Gujarat' },
-    { img: '/images/projects/14.jpg', title: 'Village Rooftop Installation', loc: '📍 Gujarat' },
-    { img: '/images/projects/15.jpg', title: 'Residential Rooftop Array', loc: '📍 Gujarat' },
-    { img: '/images/projects/16.jpg', title: 'Two-Tier Rooftop System', loc: '📍 Gujarat' },
+    { img: '/images/projects/project-13.jpg', title: 'Commercial Solar Carport', loc: '📍 Gujarat' },
+    { img: '/images/projects/project-14.jpg', title: 'Village Rooftop Installation', loc: '📍 Gujarat' },
+    { img: '/images/projects/project-15.jpg', title: 'Residential Rooftop Array', loc: '📍 Gujarat' },
+    { img: '/images/projects/project-16.jpg', title: 'Two-Tier Rooftop System', loc: '📍 Gujarat' },
     { img: '/images/projects/74gj-society.jpg', title: 'Residential Rooftop', loc: '📍 Vadodara' },
     { img: '/images/projects/jitpura-bustop.jpg', title: 'Bus Top Installation', loc: '📍 Jitpura, Gujarat' },
     { img: '/images/projects/murlidhar-tenement.jpg', title: 'Murlidhar Tenement', loc: '📍 Kendranagar, Vadodara' },
