@@ -170,7 +170,7 @@ function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-40 pb-20 min-h-[100dvh] flex flex-col justify-end">
         <p className="hero-line-1 font-mono text-xs uppercase tracking-[0.2em] text-white/60 mb-6">
-          Gujarat Solar EPC · Channel Partner — Surya Gujarat
+          Gujarat Solar EPC · Channel Partner — PM Surya Gujarat
         </p>
         <h1 className="hero-line-2 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-[1.1] max-w-4xl">
           We make going <span className="italic text-primary">solar simple.</span>
@@ -251,9 +251,6 @@ function WhoWeAre() {
                 <p className="text-muted text-sm leading-relaxed">One team from feasibility and design to commissioning and after-sales O&amp;M support.</p>
               </div>
             </div>
-            <button className="mt-6 inline-block border border-primary text-primary bg-white px-5 py-3 rounded-lg text-sm font-semibold hover:bg-primary hover:text-white transition-colors">
-              Our journey →
-            </button>
           </div>
         </div>
       </div>
@@ -380,7 +377,7 @@ function StatsBand() {
           {[
             { value: '3000+', label: 'kW Installed Capacity' },
             { value: '2022', label: 'Founded' },
-            { value: '865', label: 'kW Largest C&I project' },
+            { value: '500 tt', label: 'kW Largest C&I project' },
           ].map((stat, i) => (
             <div key={i} className="text-center flex flex-col items-center justify-center">
               <p className="font-display text-4xl lg:text-5xl font-bold text-white">{stat.value}</p>
@@ -400,9 +397,9 @@ function OurJourney() {
   const milestones = [
     { year: '2017', title: 'The beginning', desc: 'Founded in the same year our founder worked on Gujarat\'s first GEDA residential rooftop subsidy project.' },
     { year: '2019', title: 'Surya Gujarat partner', desc: 'Channel partner of GUVNL. 699.27 kW residential completed—including 27.72 kW for apartment common utilities.' },
-    { year: '2020–23', title: 'Leap of progress', desc: '6,613 kW residential (Schemes 2 & 3), 350+ kW society utilities, 400+ kW commercial & industrial.' },
-    { year: '2024', title: 'PM-Surya Ghar', desc: '3,000+ kW residential under PM-Surya Ghar: Muft Bijli Yojana. 300+ kW commercial & industrial.' },
-    { year: '2025', title: 'Growing forward', desc: 'Target 4,000+ kW residential and 2,000+ kW C&I—with 1,000+ kW already ongoing.' },
+    { year: '2022–23', title: 'Leap of progress', desc: '1.5 mW residential Surya Gujarat, 100+ kW commercial & industrial.' },
+    { year: '2024-2026', title: 'PM-Surya Ghar', desc: '3,000+ kW residential under PM-Surya Ghar: Muft Bijli Yojana. 300+ kW commercial & industrial.' },
+    { year: '2026', title: 'Growing forward', desc: 'Target 3,000+ kW residential and 2,000+ kW C&I—with 1,000+ kW already ongoing.' },
   ]
 
   return (
@@ -446,6 +443,10 @@ function Projects() {
   const [showAll, setShowAll] = useState(false)
 
   const projects = [
+    { img: '/images/projects/13.jpg', title: 'Commercial Solar Carport', loc: '📍 Gujarat' },
+    { img: '/images/projects/14.jpg', title: 'Village Rooftop Installation', loc: '📍 Gujarat' },
+    { img: '/images/projects/15.jpg', title: 'Residential Rooftop Array', loc: '📍 Gujarat' },
+    { img: '/images/projects/16.jpg', title: 'Two-Tier Rooftop System', loc: '📍 Gujarat' },
     { img: '/images/projects/74gj-society.jpg', title: 'Residential Rooftop', loc: '📍 Vadodara' },
     { img: '/images/projects/jitpura-bustop.jpg', title: 'Bus Top Installation', loc: '📍 Jitpura, Gujarat' },
     { img: '/images/projects/murlidhar-tenement.jpg', title: 'Murlidhar Tenement', loc: '📍 Kendranagar, Vadodara' },
@@ -506,7 +507,7 @@ function Affiliations() {
               <div className="w-5 h-px bg-primary" />
               <span className="text-primary text-[12.5px] font-bold tracking-[0.15em] uppercase">Affiliations</span>
             </div>
-            <h2 className="font-serif text-2xl text-ink">Registered &amp; scheme-aligned</h2>
+            <h2 className="font-serif text-2xl text-ink">Scheme-aligned</h2>
           </div>
           <p className="text-muted text-[13px] leading-relaxed max-w-[320px] mt-1">We work within Gujarat and national programs so you can access subsidies through compliant, registered installations.</p>
         </div>
