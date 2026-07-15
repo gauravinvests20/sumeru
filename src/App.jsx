@@ -377,7 +377,7 @@ function StatsBand() {
           {[
             { value: '3000+', label: 'kW Installed Capacity' },
             { value: '2022', label: 'Founded' },
-            { value: '500 tt', label: 'kW Largest C&I project' },
+            { value: '500 ++', label: 'kW Largest C&I project' },
           ].map((stat, i) => (
             <div key={i} className="text-center flex flex-col items-center justify-center">
               <p className="font-display text-4xl lg:text-5xl font-bold text-white">{stat.value}</p>
@@ -394,14 +394,6 @@ function StatsBand() {
 // OUR JOURNEY TIMELINE
 // =======================
 function OurJourney() {
-  const milestones = [
-    { year: '2017', title: 'The beginning', desc: 'Founded in the same year our founder worked on Gujarat\'s first GEDA residential rooftop subsidy project.' },
-    { year: '2019', title: 'Surya Gujarat partner', desc: 'Channel partner of GUVNL. 699.27 kW residential completed—including 27.72 kW for apartment common utilities.' },
-    { year: '2022–23', title: 'Leap of progress', desc: '1.5 mW residential Surya Gujarat, 100+ kW commercial & industrial.' },
-    { year: '2024-2026', title: 'PM-Surya Ghar', desc: '3,000+ kW residential under PM-Surya Ghar: Muft Bijli Yojana. 300+ kW commercial & industrial.' },
-    { year: '2026', title: 'Growing forward', desc: 'Target 3,000+ kW residential and 2,000+ kW C&I—with 1,000+ kW already ongoing.' },
-  ]
-
   return (
     <section className="py-14 lg:py-20" style={{ background: '#fff5f0' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -418,18 +410,31 @@ function OurJourney() {
           <p className="text-muted italic text-sm mt-4 lg:mt-0 lg:whitespace-nowrap">Numbers from our project history.</p>
         </div>
 
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          <div className="hidden lg:block absolute top-[11px] left-[10%] right-[10%] h-px bg-orange-200" />
-          {milestones.map((m, i) => (
-            <div key={i} className="relative z-10">
-              <div className="w-[22px] h-[22px] rounded-full border border-primary bg-transparent flex items-center justify-center mb-5 mx-auto lg:mx-0">
-                <div className="w-[6px] h-[6px] rounded-full bg-primary" />
-              </div>
-              <p className="font-serif text-xl font-bold mb-2 text-primary">{m.year}</p>
-              <h3 className="text-sm font-bold text-ink mb-2.5">{m.title}</h3>
-              <p className="text-muted text-[13px] leading-relaxed">{m.desc}</p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+          <div className="text-center">
+            <div className="w-5 h-5 rounded-full border border-primary bg-transparent mx-auto mb-4"></div>
+            <p className="text-primary font-bold text-lg">2022–23</p>
+            <h3 className="font-bold text-ink">Leap of progress</h3>
+            <p className="text-muted text-sm">1.5 MW residential Surya Gujarat, 100+ kW commercial & industrial.</p>
+          </div>
+          <div className="text-center">
+            <div className="w-5 h-5 rounded-full border border-primary bg-transparent mx-auto mb-4"></div>
+            <p className="text-primary font-bold text-lg">2024–2026</p>
+            <h3 className="font-bold text-ink">PM-Surya Ghar</h3>
+            <p className="text-muted text-sm">3,000+ kW residential under PM-Surya Ghar: Muft Bijli Yojana. 300+ kW C&I.</p>
+          </div>
+          <div className="text-center">
+            <div className="w-5 h-5 rounded-full border border-primary bg-transparent mx-auto mb-4"></div>
+            <p className="text-primary font-bold text-lg">2026</p>
+            <h3 className="font-bold text-ink">Growing forward</h3>
+            <p className="text-muted text-sm">Target 3,000+ kW residential and 2,000+ kW</p>
+          </div>
+          <div className="text-center">
+            <div className="w-5 h-5 rounded-full border border-primary bg-transparent mx-auto mb-4"></div>
+            <p className="text-primary font-bold text-lg">2027</p>
+            <h3 className="font-bold text-ink">Surya Gujarat scheme</h3>
+            <p className="text-muted text-sm">All Gandhi Center</p>
+          </div>
         </div>
       </div>
     </section>
