@@ -138,7 +138,7 @@ function Hero() {
   }, [])
 
   const stats = [
-    { value: '10,000+', label: 'kW Installed' },
+    { value: '3000+', label: 'kW Installed' },
     { value: 'Since 2022', label: 'Established' },
     { value: 'End-to-end', label: 'Survey to O&M' },
     { value: 'PM-Surya Ghar', label: 'Subsidy Support' },
@@ -226,7 +226,7 @@ function WhoWeAre() {
                 We design, install, and support systems for <strong className="text-ink">homes, apartment societies, and commercial &amp; industrial buildings</strong> across Gujarat.
               </p>
               <p className="text-muted text-[15.5px] leading-relaxed">
-                Proud <strong className="text-ink">channel partner of Surya Gujarat</strong> (GUVNL) and registered under <strong className="text-ink">PM-Surya Ghar: Muft Bijli Yojana</strong>.
+                Proud channel partner <strong className="text-ink">PM-Surya Ghar: Muft Bijli Yojana</strong>.
               </p>
             </div>
             <p className="font-serif italic text-xl text-ink mt-8">"Indeed, energy matters."</p>
@@ -323,26 +323,8 @@ function HowWeWork() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left - Image */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-xl overflow-hidden h-[340px] bg-gradient-to-b from-orange-100 via-orange-200 to-orange-400">
-              <svg className="absolute bottom-0 left-0 w-full h-[70%]" viewBox="0 0 500 300" preserveAspectRatio="none">
-                <g stroke="#12242c" strokeWidth="2" fill="none">
-                  <line x1="90" y1="60" x2="90" y2="230"/>
-                  <line x1="90" y1="60" x2="60" y2="90"/>
-                  <line x1="90" y1="60" x2="120" y2="95"/>
-                  <line x1="90" y1="60" x2="88" y2="30"/>
-                  <line x1="230" y1="90" x2="230" y2="230"/>
-                  <line x1="230" y1="90" x2="205" y2="115"/>
-                  <line x1="230" y1="90" x2="255" y2="120"/>
-                  <line x1="230" y1="90" x2="228" y2="60"/>
-                  <line x1="350" y1="70" x2="350" y2="230"/>
-                  <line x1="350" y1="70" x2="322" y2="98"/>
-                  <line x1="350" y1="70" x2="375" y2="102"/>
-                  <line x1="350" y1="70" x2="348" y2="40"/>
-                  <line x1="430" y1="110" x2="430" y2="230"/>
-                  <line x1="430" y1="110" x2="410" y2="130"/>
-                  <line x1="430" y1="110" x2="450" y2="132"/>
-                </g>
-              </svg>
+            <div className="relative rounded-xl overflow-hidden h-[340px]">
+              <img src="/images/how-we-work.jpg" alt="Solar installation process" className="w-full h-full object-cover" />
               <div className="absolute left-4 right-4 bottom-4 bg-black/70 text-white p-4 rounded-lg text-sm leading-relaxed">
                 Whether you own a home, manage a society, or run a factory—we guide you from first visit to commissioning.
               </div>
@@ -394,14 +376,13 @@ function StatsBand() {
   return (
     <section className="py-16 lg:py-20 bg-primary">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-3 gap-8 lg:gap-12">
           {[
-            { value: '10,000+', label: 'kW Installed capacity' },
+            { value: '3000+', label: 'kW Installed Capacity' },
             { value: '2022', label: 'Founded' },
-            { value: '699+', label: 'kW Surya Gujarat Scheme 1' },
             { value: '865', label: 'kW Largest C&I project' },
           ].map((stat, i) => (
-            <div key={i} className="text-center">
+            <div key={i} className="text-center flex flex-col items-center justify-center">
               <p className="font-display text-4xl lg:text-5xl font-bold text-white">{stat.value}</p>
               <p className="text-white/80 mt-2 font-body">{stat.label}</p>
             </div>
@@ -462,78 +443,50 @@ function OurJourney() {
 // PROJECTS GRID
 // =======================
 function Projects() {
+  const [showAll, setShowAll] = useState(false)
+
+  const projects = [
+    { img: '/images/projects/74gj-society.jpg', title: 'Residential Rooftop', loc: '📍 Vadodara' },
+    { img: '/images/projects/jitpura-bustop.jpg', title: 'Bus Top Installation', loc: '📍 Jitpura, Gujarat' },
+    { img: '/images/projects/murlidhar-tenement.jpg', title: 'Murlidhar Tenement', loc: '📍 Kendranagar, Vadodara' },
+    { img: '/images/projects/e11-235.jpg', title: 'Residential Rooftop', loc: '📍 Vadodara' },
+    { img: '/images/projects/vaishnav-kutir.jpg', title: 'Vaishnav Kutir', loc: '📍 Soma Talav, Vadodara' },
+    { img: '/images/projects/gokul-nagar.jpg', title: 'Gokul Nagar', loc: '📍 Vadodara' },
+    { img: '/images/projects/om-shree-residency.jpg', title: 'Om Shree Residency', loc: '📍 Kendranagar, Vadodara' },
+    { img: '/images/projects/shiv-dham-society.jpg', title: 'Shiv Dham Society', loc: '📍 Tarsali, Vadodara' },
+    { img: '/images/projects/ghanghretia.jpg', title: 'Residential Rooftop', loc: '📍 Ghanghretia, Vadodara' },
+    { img: '/images/projects/gayatri-nagar.jpg', title: 'Gayatri Nagar Society', loc: '📍 Kishanwadi, Vadodara' },
+    { img: '/images/projects/dabhoi.jpg', title: 'Residential Rooftop', loc: '📍 Dabhoi, Gujarat' },
+  ]
+
+  const visibleProjects = showAll ? projects : projects.slice(0, 4)
+
   return (
-    <section id="projects" className="py-16 lg:py-20" style={{ background: '#fafaf8' }}>
-      <div className="max-w-[1100px] mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="w-6 h-px bg-primary" />
-            <span className="text-primary text-xs font-bold tracking-[0.15em] uppercase">Our Projects</span>
-            <div className="w-6 h-px bg-primary" />
-          </div>
-          <h2 className="font-serif text-4xl text-ink leading-tight">
-            Projects across <em className="italic text-primary">Gujarat</em>
+    <section id="projects" className="py-20" style={{ padding: '80px 60px', background: '#fafafa' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <div style={{ color: '#f97316', fontWeight: '600', fontSize: '14px', letterSpacing: '1px' }}>— OUR PROJECTS</div>
+          <h2 style={{ fontSize: '32px', fontWeight: '500', color: '#1a1a1a', marginTop: '8px' }}>
+            Projects across <span style={{ color: '#f97316', fontStyle: 'italic' }}>Gujarat</span>
           </h2>
         </div>
 
-        {/* Main Project Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
-          {/* Large Card */}
-          <div className="lg:col-span-7 relative rounded-xl overflow-hidden h-[220px] flex items-end" style={{ background: 'linear-gradient(180deg, #3a3f2e 0%, #6b5a3a 40%, #d99a4e 70%, #2a1f18 100%)' }}>
-            <span className="absolute top-4 right-4 bg-white/90 text-ink text-[10px] font-bold letter-spacing-[0.5px] px-3 py-1.5 rounded-full">INDUSTRIAL</span>
-            <div className="p-5 w-full relative">
-              <p className="text-primary text-xs font-bold uppercase tracking-[0.3px] mb-1">368 kW · Uline Pack LLP</p>
-              <h3 className="text-xl font-bold text-white mb-1">Uline Pack LLP</h3>
-              <p className="text-white/85 text-sm">📍 Por, Gujarat</p>
-            </div>
-          </div>
-
-          {/* Right Cards */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
-            <div className="relative rounded-xl overflow-hidden h-[220px] flex items-end" style={{ background: 'linear-gradient(160deg, #6fc3d8 0%, #2a7d94 100%)' }}>
-              <span className="absolute top-4 right-4 bg-white/90 text-ink text-[10px] font-bold letter-spacing-[0.5px] px-3 py-1.5 rounded-full">COMMERCIAL</span>
-              <div className="p-5 w-full relative">
-                <p className="text-white/80 text-xs font-bold uppercase tracking-[0.3px] mb-1">100 kW</p>
-                <h3 className="text-xl font-bold text-white mb-1">Rajpipla Petrol Pump</h3>
-                <p className="text-white/85 text-sm">📍 Rajpipla</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
+          {visibleProjects.map((project, i) => (
+            <div key={i} style={{ borderRadius: '14px', overflow: 'hidden', background: '#fff', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}>
+              <img src={project.img} alt={project.title} style={{ width: '100%', height: '180px', objectFit: 'cover' }} />
+              <div style={{ padding: '16px' }}>
+                <div style={{ fontWeight: '600', color: '#1a1a1a' }}>{project.title}</div>
+                <div style={{ fontSize: '14px', color: '#777', marginTop: '4px' }}>{project.loc}</div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Secondary Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-          <div className="relative rounded-xl overflow-hidden h-[220px] flex items-end" style={{ background: 'radial-gradient(circle at 40% 40%, #8b7fc7 0%, #4a3f7a 45%, #2c2450 100%)' }}>
-            <span className="absolute top-4 right-4 bg-white/90 text-ink text-[10px] font-bold letter-spacing-[0.5px] px-3 py-1.5 rounded-full">INDUSTRIAL</span>
-            <div className="p-5 w-full relative">
-              <p className="text-white/80 text-xs font-bold uppercase tracking-[0.3px] mb-1">25.50 kW</p>
-              <h3 className="text-xl font-bold text-white mb-1">Ariva Pharma</h3>
-              <p className="text-white/85 text-sm">📍 Samaliya</p>
-            </div>
-          </div>
-          <div className="relative rounded-xl overflow-hidden h-[220px] flex items-end" style={{ background: 'linear-gradient(180deg, #3a7bc8 0%, #7fb8e0 55%, #dce8f0 100%)' }}>
-            <span className="absolute top-4 right-4 bg-white/90 text-ink text-[10px] font-bold letter-spacing-[0.5px] px-3 py-1.5 rounded-full">COMMERCIAL</span>
-            <div className="p-5 w-full relative">
-              <p className="text-white/80 text-xs font-bold uppercase tracking-[0.3px] mb-1">38.50 kW</p>
-              <h3 className="text-xl font-bold text-white mb-1">Malhar Dave Hospital</h3>
-              <p className="text-white/85 text-sm">📍 Gorwa, Vadodara</p>
-            </div>
-          </div>
-        </div>
-
-        {/* More Projects */}
-        <div className="border-t border-divider pt-6">
-          <p className="text-muted text-[11.5px] font-bold tracking-[1px] mb-5">MORE COMPLETED PROJECTS</p>
-          <div className="flex flex-wrap gap-x-10 gap-y-3 border-b border-divider pb-4 mb-4">
-            <p className="text-sm"><strong className="font-bold text-ink">Aditya Society</strong><span className="text-muted ml-1">Apartment common utilities</span></p>
-            <p className="text-sm"><strong className="font-bold text-ink">Shivam Society</strong><span className="text-muted ml-1">Apartment common utilities</span></p>
-            <p className="text-sm"><strong className="font-bold text-ink">Avadh Industries</strong><span className="text-muted ml-1">Makarpura GIDC — 30.50 kW</span></p>
-            <p className="text-sm"><strong className="font-bold text-ink">Ashirvad Enterprise</strong><span className="text-muted ml-1">Jambusar — 50 kW</span></p>
-          </div>
-          <div className="flex flex-wrap gap-x-10 gap-y-3" style={{ borderBottom: 'none', marginBottom: 0 }}>
-            <p className="text-sm"><strong className="font-bold text-ink">Jay Gurudev Farsan Mart</strong><span className="text-muted ml-1">40 kW</span></p>
-            <p className="text-sm"><strong className="font-bold text-ink">Nisarg Orthopedic Hospital</strong><span className="text-muted ml-1">Vadodara — 19.58 kW</span></p>
-          </div>
+        <div style={{ textAlign: 'center', marginTop: '32px' }}>
+          <button onClick={() => setShowAll(!showAll)} style={{ background: '#f97316', color: '#fff', border: 'none', padding: '12px 28px', borderRadius: '8px', fontWeight: '600', cursor: 'pointer', fontSize: '15px' }}>
+            {showAll ? 'Show Less' : 'Show More'}
+          </button>
         </div>
       </div>
     </section>
@@ -578,59 +531,6 @@ function Affiliations() {
             <h3 className="text-[13px] font-bold text-ink mb-1">GUVNL</h3>
             <p className="text-primary text-[10.5px] font-bold tracking-[0.3px] leading-relaxed mb-2">GUJARAT URJA VIKAS NIGAM LTD.</p>
             <p className="text-muted text-[12px] leading-relaxed">Net metering and scheme documentation aligned with GUVNL processes.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// =======================
-// TESTIMONIALS
-// =======================
-function Testimonials() {
-  return (
-    <section className="py-18 lg:py-22 bg-white text-center" style={{ padding: '72px 60px 88px' }}>
-      <div className="max-w-[1080px] mx-auto">
-        <div className="flex items-center justify-center gap-3 mb-3.5">
-          <div className="w-5 h-px bg-primary" />
-          <span className="text-primary text-[12.5px] font-bold tracking-[0.15em] uppercase">Testimonials</span>
-          <div className="w-5 h-px bg-primary" />
-        </div>
-        <h2 className="font-serif text-[34px] text-ink leading-tight mb-12">
-          What customers <em className="italic text-primary">say about us</em>
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-left">
-          <div className="border-t-2 border-primary pt-5">
-            <p className="font-serif italic text-[13.5px] text-ink leading-relaxed mb-5">"Sumeru Solution handled our subsidy paperwork and installation without stress. Our bills dropped noticeably within the first few months."</p>
-            <div className="flex items-center gap-2.5">
-              <div className="w-[30px] h-[30px] rounded-full bg-primary/10 border border-primary flex items-center justify-center text-primary text-xs font-bold">R</div>
-              <div>
-                <p className="text-[13px] font-bold text-ink">Rajesh M.</p>
-                <p className="text-[11.5px] text-muted">Homeowner, Vadodara</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t-2 border-primary pt-5">
-            <p className="font-serif italic text-[13.5px] text-ink leading-relaxed mb-5">"We installed solar on our society's common terrace for shared utilities. The team explained everything clearly to our committee."</p>
-            <div className="flex items-center gap-2.5">
-              <div className="w-[30px] h-[30px] rounded-full bg-primary/10 border border-primary flex items-center justify-center text-primary text-xs font-bold">P</div>
-              <div>
-                <p className="text-[13px] font-bold text-ink">Priya S.</p>
-                <p className="text-[11.5px] text-muted">Housing society secretary, Gujarat</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t-2 border-primary pt-5">
-            <p className="font-serif italic text-[13.5px] text-ink leading-relaxed mb-5">"Our factory rooftop system was commissioned on schedule. Savings are predictable and their O&amp;M team responds when we call."</p>
-            <div className="flex items-center gap-2.5">
-              <div className="w-[30px] h-[30px] rounded-full bg-primary/10 border border-primary flex items-center justify-center text-primary text-xs font-bold">V</div>
-              <div>
-                <p className="text-[13px] font-bold text-ink">Vikram P.</p>
-                <p className="text-[11.5px] text-muted">Factory owner, Vadodara district</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -697,8 +597,8 @@ function ContactSection() {
                 </p>
               </div>
               <div className="contact-content py-[18px]" style={{ borderTop: '1px solid #f0d9c7' }}>
-                <p className="text-[11px] font-bold tracking-[0.8px] text-ink mb-1.5">MR. DHRUV PATEL</p>
-                <p className="text-muted text-[13.5px]">814 000 9977 · 84011 56604</p>
+                <p className="text-[11px] font-bold tracking-[0.8px] text-ink mb-1.5">MR. AKASH PARMAR</p>
+                <p className="text-muted text-[13.5px]">8866426625 · 9274756625</p>
               </div>
               <div className="contact-content py-[18px]" style={{ borderTop: '1px solid #f0d9c7', borderBottom: '1px solid #f0d9c7' }}>
                 <p className="text-[11px] font-bold tracking-[0.8px] text-ink mb-1.5">EMAIL</p>
@@ -798,7 +698,7 @@ function Footer() {
             <h4 className="font-display font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-white/60">
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4" /> +91 XXXXXXXXXX
+                <Phone className="w-4 h-4" /> +91 8866426625
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" /> Sumerusolution22@gmail.com
@@ -836,11 +736,10 @@ export default function App() {
         <WhoWeAre />
         <Solutions />
         <HowWeWork />
+        <Projects />
         <StatsBand />
         <OurJourney />
-        <Projects />
         <Affiliations />
-        <Testimonials />
         <ContactSection />
       </main>
       <Footer />
