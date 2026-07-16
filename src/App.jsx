@@ -169,8 +169,11 @@ function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-40 pb-20 min-h-[100dvh] flex flex-col justify-end">
+        <p className="hero-line-1 font-mono text-xs uppercase tracking-[0.2em] text-white/60 mb-2">
+          MNRE APPROVED GUJARAT SOLAR
+        </p>
         <p className="hero-line-1 font-mono text-xs uppercase tracking-[0.2em] text-white/60 mb-6">
-          Gujarat Solar EPC · Channel Partner — PM Surya Gujarat
+          EPC CHANNEL PARTNER- PM SURYA GHAR
         </p>
         <h1 className="hero-line-2 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-[1.1] max-w-4xl">
           We make going <span className="italic text-primary">solar simple.</span>
@@ -414,7 +417,7 @@ function OurJourney() {
           <div className="text-center">
             <div className="w-5 h-5 rounded-full border border-primary bg-transparent mx-auto mb-4"></div>
             <p className="text-primary font-bold text-lg">2022–23</p>
-            <h3 className="font-bold text-ink">Leap of progress</h3>
+            <h3 className="font-bold text-ink">Surya Gujarat scheme</h3>
             <p className="text-muted text-sm">1.5 MW residential Surya Gujarat, 100+ kW commercial & industrial.</p>
           </div>
           <div className="text-center">
@@ -427,13 +430,12 @@ function OurJourney() {
             <div className="w-5 h-5 rounded-full border border-primary bg-transparent mx-auto mb-4"></div>
             <p className="text-primary font-bold text-lg">2026</p>
             <h3 className="font-bold text-ink">Growing forward</h3>
-            <p className="text-muted text-sm">Target 3,000+ kW residential and 2,000+ kW</p>
+            <p className="text-muted text-sm">Target 3,000+ kW residential and 2,000+ kW C&I</p>
           </div>
           <div className="text-center">
             <div className="w-5 h-5 rounded-full border border-primary bg-transparent mx-auto mb-4"></div>
             <p className="text-primary font-bold text-lg">2027</p>
-            <h3 className="font-bold text-ink">Surya Gujarat scheme</h3>
-            <p className="text-muted text-sm">All Gandhi Center</p>
+            <h3 className="font-bold text-ink">expansion in BESS</h3>
           </div>
         </div>
       </div>
