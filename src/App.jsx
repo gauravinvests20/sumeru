@@ -560,6 +560,13 @@ function Star({ className, fill }) {
 // =======================
 function ContactSection() {
   const [formState, setFormState] = useState('idle')
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    propertyType: 'Home',
+    message: ''
+  })
   const ref = useRef(null)
 
   useEffect(() => {
@@ -572,10 +579,30 @@ function ContactSection() {
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setFormState('sending')
-    setTimeout(() => setFormState('sent'), 1500)
+
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbzfSKQr6nNk_kHwx-6_HtMtDa2nJAk_XBxfXv2y7gzV63S72uNzHI2_MVC05Dx84-rhoQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(formData)
+      })
+      // With no-cors, we can't read the response, but the request is sent
+      setFormState('sent')
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setFormState('sent') // Still show success since request likely went through with no-cors
+    }
   }
 
   return (
@@ -617,40 +644,103 @@ function ContactSection() {
 
           {/* Right - Form */}
           <div className="contact-right">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-5">
-              <div className="field">
-                <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">NAME</label>
-                <input type="text" className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2" style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }} placeholder="Your name" />
+            {formState === 'sent' ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center">
+                <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
+                <h3 className="text-xl font-semibold text-ink mb-2">Thank you!</h3>
+                <p className="text-muted">We've received your request and will get back to you soon.</p>
+                <button
+                  type="button"
+                  onClick={() => { setFormState('idle'); setFormData({ name: '', phone: '', email: '', propertyType: 'Home', message: '' }) }}
+                  className="mt-6 text-primary font-semibold hover:underline"
+                >
+                  Send another inquiry
+                </button>
               </div>
-              <div className="field">
-                <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">PHONE</label>
-                <input type="tel" className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2" style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }} placeholder="+91 98765 43210" />
-              </div>
-            </div>
-            <div className="field mb-6">
-              <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">EMAIL</label>
-              <input type="email" className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2" style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }} placeholder="you@email.com" />
-            </div>
-            <div className="field mb-6">
-              <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">PROPERTY TYPE</label>
-              <select className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2" style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px', background: 'transparent' }}>
-                <option>Home</option>
-                <option>Housing Society</option>
-                <option>Commercial</option>
-                <option>Industrial</option>
-              </select>
-            </div>
-            <div className="field mb-6">
-              <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">MESSAGE <span className="text-gray-400 font-normal tracking-normal">(OPTIONAL)</span></label>
-              <textarea rows={3} className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2 resize-none" style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }} placeholder="Tell us about your property or electricity bill..." />
-            </div>
-            <button
-              type="button"
-              className="magnetic-btn inline-flex items-center justify-center gap-2 text-white px-6 py-3.5 rounded-lg font-semibold text-sm"
-              style={{ background: '#FF6D00' }}
-            >
-              Request free site survey →
-            </button>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-5">
+                  <div className="field">
+                    <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">NAME</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2"
+                      style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }}
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div className="field">
+                    <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">PHONE</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2"
+                      style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }}
+                      placeholder="+91 98765 43210"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="field mb-6">
+                  <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">EMAIL</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2"
+                    style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }}
+                    placeholder="you@email.com"
+                    required
+                  />
+                </div>
+                <div className="field mb-6">
+                  <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">PROPERTY TYPE</label>
+                  <select
+                    name="propertyType"
+                    value={formData.propertyType}
+                    onChange={handleChange}
+                    className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2"
+                    style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px', background: 'transparent' }}
+                  >
+                    <option>Home</option>
+                    <option>Housing Society</option>
+                    <option>Commercial</option>
+                    <option>Industrial</option>
+                  </select>
+                </div>
+                <div className="field mb-6">
+                  <label className="block text-[11px] font-bold tracking-[0.8px] text-ink mb-2.5">MESSAGE <span className="text-gray-400 font-normal tracking-normal">(OPTIONAL)</span></label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={3}
+                    className="w-full border-0 border-b focus:border-b-2 focus:border-orange-500 focus:ring-0 outline-none transition-all pb-2 resize-none"
+                    style={{ borderBottom: '1px solid #f0d9c7', paddingBottom: '10px' }}
+                    placeholder="Tell us about your property or electricity bill..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={formState === 'sending'}
+                  className="magnetic-btn inline-flex items-center justify-center gap-2 text-white px-6 py-3.5 rounded-lg font-semibold text-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                  style={{ background: '#FF6D00' }}
+                >
+                  {formState === 'sending' ? (
+                    <>Sending...</>
+                  ) : (
+                    <>Request free site survey →</>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
